@@ -22,7 +22,9 @@ namespace CompleteProject
         PlayerMovement playerMovement;                              // Reference to the player's movement.
         PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
         bool isDead;                                                // Whether the player is dead.
+        bool isFatal;                                               // 瀕死状態か
         bool damaged;                                               // True when the player gets damaged.
+        int dangerHealth = 30;                                      // currentHealthがこの値を下回ると瀕死状態になる
 
         float playerDeathMotionDuration = 0;
 
@@ -87,11 +89,16 @@ namespace CompleteProject
             playerAudio.Play ();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
-            if(currentHealth <= 1 && !isDead)
+            if(currentHealth <= 1)
             {
                 // ... it should die.
                 Death ();
             }
+            else if(!isFatal && currentHealth < dangerHealth)
+            {
+                FatalDamaged();
+            }
+
         }
 
         // 課題１　ゲームオーバー課題の実装、ここからです
@@ -103,6 +110,15 @@ namespace CompleteProject
             playerShooting.DisableEffects();
         
             StartCoroutine(InvokeGameoverByCoroutine());
+        }
+
+        // 瀕死状態でBGMを変更
+        void FatalDamaged()
+        {
+            isFatal = true;
+
+            // BgmManagerでBGM変更
+            BgmManager.ChangeBGM(BgmManager.BGM.PlayerFatal);
         }
 
         private IEnumerator InvokeGameoverByCoroutine()

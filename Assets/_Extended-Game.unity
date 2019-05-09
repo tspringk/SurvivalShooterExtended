@@ -2816,6 +2816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7165ed619bf703a48a70cd3d568fbe9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmAudioSource: {fileID: 461218464}
+  bgmClips: []
 --- !u!114 &1410454872
 MonoBehaviour:
   m_ObjectHideFlags: 0
