@@ -32,8 +32,7 @@ namespace CompleteProject
             // Setting the current health when the enemy first spawns.
             currentHealth = startingHealth;
         }
-
-
+    
         void Update ()
         {
             // If the enemy should be sinking...
@@ -73,13 +72,10 @@ namespace CompleteProject
             hitParticles.Play();
 
             // If the current health is less than or equal to zero...
-            if (!isDead)
+            if (currentHealth <= 0)
             {
-                if (currentHealth <= 0 || Managers.ContentManager.status.Equals(Managers.ContentManager.Status.Boss))
-                {
-                    // ... the enemy is dead.
-                    Death();
-                }
+                // ... the enemy is dead.
+                Death();
             }
         }
 
@@ -98,6 +94,12 @@ namespace CompleteProject
             // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
             enemyAudio.clip = deathClip;
             enemyAudio.Play ();
+
+            if (isBoss)
+            {
+                // This is anti-pattern, but...
+                Managers.ContentManager.status = Managers.ContentManager.Status.Normal;
+            }
         }
 
 

@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1169601276735194
 GameObject:
   m_ObjectHideFlags: 1
@@ -2210,6 +2210,7 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 10000
   deathClip: {fileID: 8300000, guid: 2ed8b7b385eee4324a1e6cb9b5dc9f62, type: 3}
+  isBoss: 1
 --- !u!114 &114869941598368894
 MonoBehaviour:
   m_ObjectHideFlags: 1

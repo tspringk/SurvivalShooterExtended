@@ -3730,10 +3730,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114691411887046040, guid: cab79345849ca427c9392a473f192d02,
-        type: 2}
-      propertyPath: isBoss
-      value: 1
+    - target: {fileID: 1158960735390330, guid: cab79345849ca427c9392a473f192d02, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab79345849ca427c9392a473f192d02, type: 2}
