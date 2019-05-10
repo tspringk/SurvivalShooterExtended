@@ -12,7 +12,8 @@ namespace CompleteProject
         Paused,
         UnPaused,
         PlayerFatal,
-    }
+        Boss
+    };
 
     public class BgmManager : MonoBehaviour
     {
@@ -25,6 +26,11 @@ namespace CompleteProject
         AudioMixerSnapshot pauseSnap;
         [SerializeField]
         AudioMixerSnapshot fatalDamagedSnap;
+
+        [SerializeField]
+        AudioClip audioClip_boss;
+        [SerializeField]
+        AudioMixerSnapshot bossSnap;
 
         static BgmManager instance;
 
@@ -73,6 +79,12 @@ namespace CompleteProject
                     snap = fatalDamagedSnap;
                     currentBgmSnap = snap;
                     break;
+                case BGM.Boss:
+                    snap = bossSnap;
+                    bgmAudioSource.clip = audioClip_boss;
+                    bgmAudioSource.Play();
+                    break;
+
                 //case BGM.Nomal:
                 default:
                     snap = nomalSnap;
