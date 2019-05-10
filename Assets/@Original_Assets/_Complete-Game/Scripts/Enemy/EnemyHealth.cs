@@ -18,6 +18,8 @@ namespace CompleteProject
         bool isDead;                                // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
+        [SerializeField]
+        private bool isBoss = false;
 
         void Awake ()
         {
@@ -35,10 +37,18 @@ namespace CompleteProject
         void Update ()
         {
             // If the enemy should be sinking...
-            if(isSinking)
+            if (isSinking)
             {
                 // ... move the enemy down by the sinkSpeed per second.
-                transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+                transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+            }
+            if (!isDead)
+            {
+                if (!isBoss && Managers.ContentManager.status.Equals(Managers.ContentManager.Status.Boss))
+                {
+                    // ... the enemy is dead.
+                    Death();
+                }
             }
         }
 
@@ -63,15 +73,18 @@ namespace CompleteProject
             hitParticles.Play();
 
             // If the current health is less than or equal to zero...
-            if(currentHealth <= 0)
+            if (!isDead)
             {
-                // ... the enemy is dead.
-                Death ();
+                if (currentHealth <= 0 || Managers.ContentManager.status.Equals(Managers.ContentManager.Status.Boss))
+                {
+                    // ... the enemy is dead.
+                    Death();
+                }
             }
         }
 
 
-        void Death ()
+        public void Death ()
         {
             // The enemy is dead.
             isDead = true;
