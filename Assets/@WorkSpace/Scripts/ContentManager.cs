@@ -13,6 +13,7 @@ namespace Managers
             Boss
         };
         public static Status status;
+        private bool isCompleted = false;
 
         public static Action<CompleteProject.EnemyManager.Status> ChangeEnemyStatus;
 
@@ -40,10 +41,10 @@ namespace Managers
         {
             while(true)
             {
-                if (!status.Equals(Status.Boss) && CompleteProject.ScoreManager.score >= 100)
+                if (!status.Equals(Status.Boss) && CompleteProject.ScoreManager.score >= 100 && !isCompleted)
                 {
                     status = Status.Boss;
-
+                    isCompleted = true;
                     ChangeEnemyStatus(CompleteProject.EnemyManager.Status.Boss);
                     CompleteProject.BgmManager.ChangeBGM(CompleteProject.BGM.Boss);
                 }
