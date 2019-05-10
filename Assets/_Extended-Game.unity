@@ -2817,7 +2817,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmAudioSource: {fileID: 461218464}
-  bgmClips: []
+  nomalSnap: {fileID: 24500003, guid: 5b84db49d40ea449aa4f3e3bd229ab5b, type: 2}
+  pauseSnap: {fileID: 24500000, guid: 5b84db49d40ea449aa4f3e3bd229ab5b, type: 2}
+  fatalDamagedSnap: {fileID: 245463121344444660, guid: 5b84db49d40ea449aa4f3e3bd229ab5b,
+    type: 2}
 --- !u!114 &1410454872
 MonoBehaviour:
   m_ObjectHideFlags: 0

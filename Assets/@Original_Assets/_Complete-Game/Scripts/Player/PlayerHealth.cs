@@ -24,7 +24,7 @@ namespace CompleteProject
         bool isDead;                                                // Whether the player is dead.
         bool isFatal;                                               // 瀕死状態か
         bool damaged;                                               // True when the player gets damaged.
-        int dangerHealth = 30;                                      // currentHealthがこの値を下回ると瀕死状態になる
+        int dangerHealth = 50;                                      // currentHealthがこの値を下回ると瀕死状態になる
 
         float playerDeathMotionDuration = 0;
 
@@ -108,7 +108,9 @@ namespace CompleteProject
             isDead = true;
             // 別スクリプト(PlayerShooting.cs)にあるプレイヤーが撃った攻撃を消去する処理を実行します。
             playerShooting.DisableEffects();
-        
+
+            BgmManager.ChangeBGM(BGM.Nomal, 1.0f);
+
             StartCoroutine(InvokeGameoverByCoroutine());
         }
 
@@ -118,7 +120,7 @@ namespace CompleteProject
             isFatal = true;
 
             // BgmManagerでBGM変更
-            BgmManager.ChangeBGM(BgmManager.BGM.PlayerFatal);
+            BgmManager.ChangeBGM(BGM.PlayerFatal);
         }
 
         private IEnumerator InvokeGameoverByCoroutine()

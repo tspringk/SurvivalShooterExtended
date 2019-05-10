@@ -45,15 +45,17 @@ public class PauseManager : MonoBehaviour {
 	{
 		if (Time.timeScale == 0)
 		{
-			paused.TransitionTo(.01f);
-		}
-		
-		else
+            //paused.TransitionTo(.01f);
+            CompleteProject.BgmManager.ChangeBGM(CompleteProject.BGM.Paused);
+        }
+
+        else
 			
 		{
-			unpaused.TransitionTo(.01f);
-		}
-	}
+            //unpaused.TransitionTo(.01f);
+            CompleteProject.BgmManager.ChangeBGM(CompleteProject.BGM.UnPaused);
+        }
+    }
 	
 	public void Quit()
 	{
